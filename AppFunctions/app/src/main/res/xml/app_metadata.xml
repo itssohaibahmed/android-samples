@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppFunctionAppMetadata xmlns:appfn="http://schemas.android.com/apk/androidx.appfunctions"
+    appfn:description="This app lets users create, view, edit, and delete personal notes stored locally on the device.
+        Operational Patterns:
+        - Use createNote when the user asks to save, add, jot down, or remember something as a note.
+        - Extract a short title from the user's request (summary or first sentence) and put the full details in content.
+        Constraints:
+        - title must not be blank."
+    appfn:displayDescription="@string/app_function_user_description" />

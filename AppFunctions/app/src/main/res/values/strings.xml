@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppFunctions</string>
+    <string name="app_function_user_description">Create and manage notes with AI assistance</string>
 </resources>
