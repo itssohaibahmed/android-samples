@@ -44,6 +44,16 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // KSP-generated AppFunctions metadata (AGP 9 does not auto-merge these assets yet)
+    sourceSets {
+        getByName("debug") {
+            assets.directories.add("build/generated/ksp/debug/resources/assets")
+        }
+        getByName("release") {
+            assets.directories.add("build/generated/ksp/release/resources/assets")
+        }
+    }
 }
 
 // =============================================================================
@@ -53,6 +63,11 @@ android {
 ksp {
     // Merges all @AppFunction declarations into one schema for the OS
     arg("appfunctions:aggregateAppFunctions", "true")
+}
+
+// Ensure KSP runs before asset merge so app_functions_v2.xml is packaged
+tasks.matching { it.name.startsWith("merge") && it.name.endsWith("Assets") }.configureEach {
+    dependsOn(tasks.matching { it.name.startsWith("ksp") && it.name.endsWith("Kotlin") })
 }
 
 // =============================================================================
